@@ -58,8 +58,6 @@ class RawDataPoint(DataPoint):
     def _readRawValue(self):
         firstByte = self._dataValueBytes[0]
         secondByte = self._dataValueBytes[1]
-        # TODO(check if this is correct iwth soem more tests..
-        # and see http://stackoverflow.com/questions/5994307/bitwise-operations-in-python
         rawValue = firstByte * 256 + secondByte;
         if rawValue >= 32768:
             rawValue -= 65536
@@ -85,9 +83,7 @@ class EEGPowersDataPoint(DataPoint):
 
 
     def _convertToBigEndianInteger(self, threeBytes):
-        # TODO(check if this is correct iwth soem more tests..
-        # and see http://stackoverflow.com/questions/5994307/bitwise-operations-in-python
-        # only use first 16 bits of second number, not rest inc ase number is negative, otherwise
+        # only use first 16 bits of second number, not rest incase number is negative, otherwise
         # python would take all 1s before this bit...
         # same with first number, only take first 8 bits...
         bigEndianInteger = (threeBytes[0] << 16) |\
