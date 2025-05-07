@@ -29,10 +29,6 @@ class MindwavePacketPayloadParser:
         return self._ignoreExtendedCodeBytesAndGetRowCode()
         
     def _ignoreExtendedCodeBytesAndGetRowCode(self):
-        # EXTENDED_CODE_BYTES seem not to be used according to 
-        # http://wearcam.org/ece516/mindset_communications_protocol.pdf
-        # (August 2012)
-        # so we ignore them
         byte = self._getNextByte()
         while (byte == EXTENDED_CODE_BYTE):
             byte = self._getNextByte()
