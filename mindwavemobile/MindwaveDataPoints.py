@@ -61,7 +61,7 @@ class RawDataPoint(DataPoint):
         rawValue = firstByte * 256 + secondByte;
         if rawValue >= 32768:
             rawValue -= 65536
-        return rawValue # hope this is correct ;)
+        return rawValue
 
     def __str__(self):
         return "Raw Value: " + str(self.rawValue)
